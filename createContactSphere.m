@@ -1,5 +1,14 @@
+%-------------------------------------------------------------------------%
+%    Author:   Luca Modenese,  2025                                       %
+%    email:    l.modenese@unsw.edu.au                                     %
+% ----------------------------------------------------------------------- %
+
 function osimSphere = createContactSphere(sphereName, bodyName, aLocation, aRadius)
 
+% import OpenSim libraries
+import org.opensim.modeling.*
+
+% define HuntCrossleyForce
 osimSphere=ContactSphere();
 osimSphere.setName(sphereName);
 Body=model.getBodySet.get(bodyName);
