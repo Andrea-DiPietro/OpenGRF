@@ -239,15 +239,12 @@ position_l=min_p_calcn_l_y(pos_l);
 
 % finding calcn and toes scaling factors
 Calcn_r_SF=model.getBodySet.get(calcn_r_name).get_attached_geometry(0).get_scale_factors.getAsMat;
-Calcn_l_SF=model.getBodySet.get(calcn_l_name).get_attached_geometry(0).get_scale_factors.getAsMat;
 Toes_r_SF=model.getBodySet.get(toes_r_name).get_attached_geometry(0).get_scale_factors.getAsMat;
-Toes_l_SF=model.getBodySet.get(toes_l_name).get_attached_geometry(0).get_scale_factors.getAsMat;
 
 % for R and L
 %     L = -1;
 
-% determining position of contact shperes
-
+% determining position of contact spheres
 calcn_sphere_coeff = [heel_shift,       0.03, -0.01; %Calcn_r_SF
                      heel_shift,       0.03,  0.01;
                      0.035+heel_shift, 0.03,  -0.02;
@@ -264,6 +261,7 @@ toes_sphere_coeff =    [0.026 0.03 -0.01; % Toes_r_SF
                         0.0 0.03 0.03];
 calcn_sphere_centres = calcn_sphere_coeff * Calcn_r_SF;
 toes_sphere_centres = toes_sphere_coeff * Toes_r_SF;
+sphere_centres = [calcn_sphere_centres; toes_sphere_centres] %.* SIDE;
 
 PosSp1R=[(0+heel_shift)*Calcn_r_SF(1) 0.03*Calcn_r_SF(2) -0.01*Calcn_r_SF(3)];
 PosSp2R=[(0+heel_shift)*Calcn_r_SF(1) 0.03*Calcn_r_SF(2) 0.01*Calcn_r_SF(3)];
@@ -280,17 +278,16 @@ PosSp12R=[0.14*Calcn_r_SF(1) 0.03*Calcn_r_SF(2) 0.045*Calcn_r_SF(3)];
 PosSp13R=[0.0*Toes_r_SF(1) 0.03*Toes_r_SF(2) -0.005*Toes_r_SF(3)];
 PosSp14R=[0.0*Toes_r_SF(1) 0.03*Toes_r_SF(2) 0.03*Toes_r_SF(3)];
 
-
-
 % creating spheres and ground contact
-Sphere_Foot_1_R=ContactSphere();
-Sphere_Foot_1_R.setName('Sphere_Foot_1_R');
-Body=model.getBodySet.get(calcn_r_name);
-Frame=PhysicalFrame.safeDownCast(Body);
-Sphere_Foot_1_R.setFrame(Frame);
-Sphere_Foot_1_R.setLocation(Vec3.createFromMat(PosSp1R));
-Sphere_Foot_1_R.setRadius(Sp_radius);
-model.addContactGeometry(Sphere_Foot_1_R)
+
+for ns = 1:size(sphere_centres,1)
+    sphere_name = ['Sphere_Foot_', num2str(ns), '_', side];
+    body_name = ['calcn_', side];
+    centre = sphere_centres(ns, :);
+    radius = Sp_radius;
+    osimSphere = createContactSphere(sphereName, body_name, centre, radius);
+    model.addContactGeometry(osimSphere)
+end
 
 % end
 
@@ -329,17 +326,6 @@ ForceGround_Foot_1_R_A.setViscousFriction(0);
 ForceGround_Foot_1_R_A.setTransitionVelocity(0.13)
 %ForceGround_Foot1_R.print('es_contForce.xml')
 
-ForceGround_Foot_2_R_A = HuntCrossleyForce();
-ForceGround_Foot_2_R_A.setName('ForceGround_Foot_2_R_A');
-ForceGround_Foot_2_R_A.set_appliesForce(true);
-ForceGround_Foot_2_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_2_R')
-ForceGround_Foot_2_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_2_R_A.setDissipation(0);
-ForceGround_Foot_2_R_A.setStaticFriction(0);
-ForceGround_Foot_2_R_A.setDynamicFriction(0);
-ForceGround_Foot_2_R_A.setViscousFriction(0);
-ForceGround_Foot_2_R_A.setTransitionVelocity(0.13)
-
 ForceGround_Foot_1_L_A = HuntCrossleyForce();
 ForceGround_Foot_1_L_A.setName('ForceGround_Foot_1_L_A');
 ForceGround_Foot_1_L_A.set_appliesForce(true);
@@ -350,259 +336,6 @@ ForceGround_Foot_1_L_A.setStaticFriction(0);
 ForceGround_Foot_1_L_A.setDynamicFriction(0);
 ForceGround_Foot_1_L_A.setViscousFriction(0);
 ForceGround_Foot_1_L_A.setTransitionVelocity(0.13)
-%ForceGround_Foot1_R.print('es_contForce.xml')
-ForceGround_Foot_2_L_A = HuntCrossleyForce();
-ForceGround_Foot_2_L_A.setName('ForceGround_Foot_2_L_A');
-ForceGround_Foot_2_L_A.set_appliesForce(true);
-ForceGround_Foot_2_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_2_L')
-ForceGround_Foot_2_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_2_L_A.setDissipation(0);
-ForceGround_Foot_2_L_A.setStaticFriction(0);
-ForceGround_Foot_2_L_A.setDynamicFriction(0);
-ForceGround_Foot_2_L_A.setViscousFriction(0);
-ForceGround_Foot_2_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_3_R_A = HuntCrossleyForce();
-ForceGround_Foot_3_R_A.setName('ForceGround_Foot_3_R_A');
-ForceGround_Foot_3_R_A.set_appliesForce(true);
-ForceGround_Foot_3_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_3_R');
-ForceGround_Foot_3_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_3_R_A.setDissipation(0);
-ForceGround_Foot_3_R_A.setStaticFriction(0);
-ForceGround_Foot_3_R_A.setDynamicFriction(0);
-ForceGround_Foot_3_R_A.setViscousFriction(0);
-ForceGround_Foot_3_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_3_L_A=HuntCrossleyForce();
-ForceGround_Foot_3_L_A.setName('ForceGround_Foot_3_L_A');
-ForceGround_Foot_3_L_A.set_appliesForce(true);
-ForceGround_Foot_3_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_3_L')
-ForceGround_Foot_3_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_3_L_A.setDissipation(0);
-ForceGround_Foot_3_L_A.setStaticFriction(0);
-ForceGround_Foot_3_L_A.setDynamicFriction(0);
-ForceGround_Foot_3_L_A.setViscousFriction(0);
-ForceGround_Foot_3_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_4_R_A = HuntCrossleyForce();
-ForceGround_Foot_4_R_A.setName('ForceGround_Foot_4_R_A');
-ForceGround_Foot_4_R_A.set_appliesForce(true);
-ForceGround_Foot_4_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_4_R');
-ForceGround_Foot_4_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_4_R_A.setDissipation(0);
-ForceGround_Foot_4_R_A.setStaticFriction(0);
-ForceGround_Foot_4_R_A.setDynamicFriction(0);
-ForceGround_Foot_4_R_A.setViscousFriction(0);
-ForceGround_Foot_4_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_4_L_A=HuntCrossleyForce();
-ForceGround_Foot_4_L_A.setName('ForceGround_Foot_4_L_A');
-ForceGround_Foot_4_L_A.set_appliesForce(true);
-ForceGround_Foot_4_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_4_L')
-ForceGround_Foot_4_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_4_L_A.setDissipation(0);
-ForceGround_Foot_4_L_A.setStaticFriction(0);
-ForceGround_Foot_4_L_A.setDynamicFriction(0);
-ForceGround_Foot_4_L_A.setViscousFriction(0);
-ForceGround_Foot_4_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_5_R_A = HuntCrossleyForce();
-ForceGround_Foot_5_R_A.setName('ForceGround_Foot_5_R_A');
-ForceGround_Foot_5_R_A.set_appliesForce(true);
-ForceGround_Foot_5_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_5_R');
-ForceGround_Foot_5_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_5_R_A.setDissipation(0);
-ForceGround_Foot_5_R_A.setStaticFriction(0);
-ForceGround_Foot_5_R_A.setDynamicFriction(0);
-ForceGround_Foot_5_R_A.setViscousFriction(0);
-ForceGround_Foot_5_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_5_L_A=HuntCrossleyForce();
-ForceGround_Foot_5_L_A.setName('ForceGround_Foot_5_L_A');
-ForceGround_Foot_5_L_A.set_appliesForce(true);
-ForceGround_Foot_5_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_5_L')
-ForceGround_Foot_5_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_5_L_A.setDissipation(0);
-ForceGround_Foot_5_L_A.setStaticFriction(0);
-ForceGround_Foot_5_L_A.setDynamicFriction(0);
-ForceGround_Foot_5_L_A.setViscousFriction(0);
-ForceGround_Foot_5_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_6_R_A = HuntCrossleyForce();
-ForceGround_Foot_6_R_A.setName('ForceGround_Foot_6_R_A');
-ForceGround_Foot_6_R_A.set_appliesForce(true);
-ForceGround_Foot_6_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_6_R');
-ForceGround_Foot_6_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_6_R_A.setDissipation(0);
-ForceGround_Foot_6_R_A.setStaticFriction(0);
-ForceGround_Foot_6_R_A.setDynamicFriction(0);
-ForceGround_Foot_6_R_A.setViscousFriction(0);
-ForceGround_Foot_6_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_6_L_A=HuntCrossleyForce();
-ForceGround_Foot_6_L_A.setName('ForceGround_Foot_6_L_A');
-ForceGround_Foot_6_L_A.set_appliesForce(true);
-ForceGround_Foot_6_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_6_L')
-ForceGround_Foot_6_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_6_L_A.setDissipation(0);
-ForceGround_Foot_6_L_A.setStaticFriction(0);
-ForceGround_Foot_6_L_A.setDynamicFriction(0);
-ForceGround_Foot_6_L_A.setViscousFriction(0);
-ForceGround_Foot_6_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_7_R_A = HuntCrossleyForce();
-ForceGround_Foot_7_R_A.setName('ForceGround_Foot_7_R_A');
-ForceGround_Foot_7_R_A.set_appliesForce(true);
-ForceGround_Foot_7_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_7_R');
-ForceGround_Foot_7_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_7_R_A.setDissipation(0);
-ForceGround_Foot_7_R_A.setStaticFriction(0);
-ForceGround_Foot_7_R_A.setDynamicFriction(0);
-ForceGround_Foot_7_R_A.setViscousFriction(0);
-ForceGround_Foot_7_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_7_L_A=HuntCrossleyForce();
-ForceGround_Foot_7_L_A.setName('ForceGround_Foot_7_L_A');
-ForceGround_Foot_7_L_A.set_appliesForce(true);
-ForceGround_Foot_7_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_7_L')
-ForceGround_Foot_7_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_7_L_A.setDissipation(0);
-ForceGround_Foot_7_L_A.setStaticFriction(0);
-ForceGround_Foot_7_L_A.setDynamicFriction(0);
-ForceGround_Foot_7_L_A.setViscousFriction(0);
-ForceGround_Foot_7_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_8_R_A = HuntCrossleyForce();
-ForceGround_Foot_8_R_A.setName('ForceGround_Foot_8_R_A');
-ForceGround_Foot_8_R_A.set_appliesForce(true);
-ForceGround_Foot_8_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_8_R');
-ForceGround_Foot_8_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_8_R_A.setDissipation(0);
-ForceGround_Foot_8_R_A.setStaticFriction(0);
-ForceGround_Foot_8_R_A.setDynamicFriction(0);
-ForceGround_Foot_8_R_A.setViscousFriction(0);
-ForceGround_Foot_8_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_8_L_A=HuntCrossleyForce();
-ForceGround_Foot_8_L_A.setName('ForceGround_Foot_8_L_A');
-ForceGround_Foot_8_L_A.set_appliesForce(true);
-ForceGround_Foot_8_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_8_L')
-ForceGround_Foot_8_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_8_L_A.setDissipation(0);
-ForceGround_Foot_8_L_A.setStaticFriction(0);
-ForceGround_Foot_8_L_A.setDynamicFriction(0);
-ForceGround_Foot_8_L_A.setViscousFriction(0);
-ForceGround_Foot_8_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_9_R_A = HuntCrossleyForce();
-ForceGround_Foot_9_R_A.setName('ForceGround_Foot_9_R_A');
-ForceGround_Foot_9_R_A.set_appliesForce(true);
-ForceGround_Foot_9_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_9_R');
-ForceGround_Foot_9_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_9_R_A.setDissipation(0);
-ForceGround_Foot_9_R_A.setStaticFriction(0);
-ForceGround_Foot_9_R_A.setDynamicFriction(0);
-ForceGround_Foot_9_R_A.setViscousFriction(0);
-ForceGround_Foot_9_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_9_L_A=HuntCrossleyForce();
-ForceGround_Foot_9_L_A.setName('ForceGround_Foot_9_L_A');
-ForceGround_Foot_9_L_A.set_appliesForce(true);
-ForceGround_Foot_9_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_9_L')
-ForceGround_Foot_9_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_9_L_A.setDissipation(0);
-ForceGround_Foot_9_L_A.setStaticFriction(0);
-ForceGround_Foot_9_L_A.setDynamicFriction(0);
-ForceGround_Foot_9_L_A.setViscousFriction(0);
-ForceGround_Foot_9_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_10_R_A = HuntCrossleyForce();
-ForceGround_Foot_10_R_A.setName('ForceGround_Foot_10_R_A');
-ForceGround_Foot_10_R_A.set_appliesForce(true);
-ForceGround_Foot_10_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_10_R');
-ForceGround_Foot_10_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_10_R_A.setDissipation(0);
-ForceGround_Foot_10_R_A.setStaticFriction(0);
-ForceGround_Foot_10_R_A.setDynamicFriction(0);
-ForceGround_Foot_10_R_A.setViscousFriction(0);
-ForceGround_Foot_10_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_10_L_A=HuntCrossleyForce();
-ForceGround_Foot_10_L_A.setName('ForceGround_Foot_10_L_A');
-ForceGround_Foot_10_L_A.set_appliesForce(true);
-ForceGround_Foot_10_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_10_L')
-ForceGround_Foot_10_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_10_L_A.setDissipation(0);
-ForceGround_Foot_10_L_A.setStaticFriction(0);
-ForceGround_Foot_10_L_A.setDynamicFriction(0);
-ForceGround_Foot_10_L_A.setViscousFriction(0);
-ForceGround_Foot_10_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_11_R_A = HuntCrossleyForce();
-ForceGround_Foot_11_R_A.setName('ForceGround_Foot_11_R_A');
-ForceGround_Foot_11_R_A.set_appliesForce(true);
-ForceGround_Foot_11_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_11_R');
-ForceGround_Foot_11_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_11_R_A.setDissipation(0);
-ForceGround_Foot_11_R_A.setStaticFriction(0);
-ForceGround_Foot_11_R_A.setDynamicFriction(0);
-ForceGround_Foot_11_R_A.setViscousFriction(0);
-ForceGround_Foot_11_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_11_L_A=HuntCrossleyForce();
-ForceGround_Foot_11_L_A.setName('ForceGround_Foot_11_L_A');
-ForceGround_Foot_11_L_A.set_appliesForce(true);
-ForceGround_Foot_11_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_11_L')
-ForceGround_Foot_11_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_11_L_A.setDissipation(0);
-ForceGround_Foot_11_L_A.setStaticFriction(0);
-ForceGround_Foot_11_L_A.setDynamicFriction(0);
-ForceGround_Foot_11_L_A.setViscousFriction(0);
-ForceGround_Foot_11_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_12_R_A = HuntCrossleyForce();
-ForceGround_Foot_12_R_A.setName('ForceGround_Foot_12_R_A');
-ForceGround_Foot_12_R_A.set_appliesForce(true);
-ForceGround_Foot_12_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_12_R');
-ForceGround_Foot_12_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_12_R_A.setDissipation(0);
-ForceGround_Foot_12_R_A.setStaticFriction(0);
-ForceGround_Foot_12_R_A.setDynamicFriction(0);
-ForceGround_Foot_12_R_A.setViscousFriction(0);
-ForceGround_Foot_12_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_12_L_A=HuntCrossleyForce();
-ForceGround_Foot_12_L_A.setName('ForceGround_Foot_12_L_A');
-ForceGround_Foot_12_L_A.set_appliesForce(true);
-ForceGround_Foot_12_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_12_L')
-ForceGround_Foot_12_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_12_L_A.setDissipation(0);
-ForceGround_Foot_12_L_A.setStaticFriction(0);
-ForceGround_Foot_12_L_A.setDynamicFriction(0);
-ForceGround_Foot_12_L_A.setViscousFriction(0);
-ForceGround_Foot_12_L_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_13_R_A = HuntCrossleyForce();
-ForceGround_Foot_13_R_A.setName('ForceGround_Foot_13_R_A');
-ForceGround_Foot_13_R_A.set_appliesForce(true);
-ForceGround_Foot_13_R_A.addGeometry('ground_Foot_R_A Sphere_Foot_13_R');
-ForceGround_Foot_13_R_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_13_R_A.setDissipation(0);
-ForceGround_Foot_13_R_A.setStaticFriction(0);
-ForceGround_Foot_13_R_A.setDynamicFriction(0);
-ForceGround_Foot_13_R_A.setViscousFriction(0);
-ForceGround_Foot_13_R_A.setTransitionVelocity(0.13)
-
-ForceGround_Foot_13_L_A=HuntCrossleyForce();
-ForceGround_Foot_13_L_A.setName('ForceGround_Foot_13_L_A');
-ForceGround_Foot_13_L_A.set_appliesForce(true);
-ForceGround_Foot_13_L_A.addGeometry('ground_Foot_L_A Sphere_Foot_13_L')
-ForceGround_Foot_13_L_A.setStiffness(Sp_stiffness);
-ForceGround_Foot_13_L_A.setDissipation(0);
-ForceGround_Foot_13_L_A.setStaticFriction(0);
-ForceGround_Foot_13_L_A.setDynamicFriction(0);
-ForceGround_Foot_13_L_A.setViscousFriction(0);
-ForceGround_Foot_13_L_A.setTransitionVelocity(0.13)
 
 ForceGround_Foot_14_R_A = HuntCrossleyForce();
 ForceGround_Foot_14_R_A.setName('ForceGround_Foot_14_R_A');
@@ -626,67 +359,19 @@ ForceGround_Foot_14_L_A.setDynamicFriction(0);
 ForceGround_Foot_14_L_A.setViscousFriction(0);
 ForceGround_Foot_14_L_A.setTransitionVelocity(0.13)
 
-if FullBody
-ForceGround_Hand_L = HuntCrossleyForce();
-ForceGround_Hand_L.setName('ForceGround_Hand_L');
-ForceGround_Hand_L.set_appliesForce(true);
-ForceGround_Hand_L.addGeometry('ground_Hand_L Sphere_Hand_L')
-ForceGround_Hand_L.setStiffness(Sp_stiffness);
-ForceGround_Hand_L.setDissipation(0);
-ForceGround_Hand_L.setStaticFriction(0);
-ForceGround_Hand_L.setDynamicFriction(0);
-ForceGround_Hand_L.setViscousFriction(0);
-ForceGround_Hand_L.setTransitionVelocity(0.13)
-
-ForceGround_Hand_R = HuntCrossleyForce();
-ForceGround_Hand_R.setName('ForceGround_Hand_R');
-ForceGround_Hand_R.set_appliesForce(true);
-ForceGround_Hand_R.addGeometry('ground_Hand_R Sphere_Hand_R')
-ForceGround_Hand_R.setStiffness(Sp_stiffness);
-ForceGround_Hand_R.setDissipation(0);
-ForceGround_Hand_R.setStaticFriction(0);
-ForceGround_Hand_R.setDynamicFriction(0);
-ForceGround_Hand_R.setViscousFriction(0);
-ForceGround_Hand_R.setTransitionVelocity(0.13)
-end
 % Automate the Force reporter creation
 model.getForceSet.cloneAndAppend(ForceGround_Foot_1_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_2_R_A);
 model.getForceSet.cloneAndAppend(ForceGround_Foot_1_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_2_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_3_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_3_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_4_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_4_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_5_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_5_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_6_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_6_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_7_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_7_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_8_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_8_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_9_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_9_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_10_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_10_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_11_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_11_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_12_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_12_L_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_13_R_A);
-model.getForceSet.cloneAndAppend(ForceGround_Foot_13_L_A);
+
 model.getForceSet.cloneAndAppend(ForceGround_Foot_14_R_A);
 model.getForceSet.cloneAndAppend(ForceGround_Foot_14_L_A);
-if FullBody
-model.getForceSet.cloneAndAppend(ForceGround_Hand_R);
-model.getForceSet.cloneAndAppend(ForceGround_Hand_L);
-end
+
 model.finalizeConnections()
 modelProcessed_path=fullfile(ModelFolder,"ModelProcessed.osim");
 model.setName("ModelProcessed");
 model.print(modelProcessed_path);
 modelProcessed=Model(modelProcessed_path);
+
 %% Analyzing the Force reporter output to detect the contact with ground load IK file
 AnTool=AnalyzeTool();
 AnTool.setModel(modelProcessed);
