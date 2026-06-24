@@ -1,0 +1,260 @@
+OPENGRF: GROUND REACTION FORCE ESTIMATION TOOL
+SOFTWARE LICENCE AGREEMENT
+ACADEMIC OR NON-PROFIT ORGANISATION NON-COMMERCIAL RESEARCH USE ONLY
+
+Licensor and Rights Holder: Andrea Di Pietro (Italy)
+Copyright (c) 2026 Andrea Di Pietro. All rights reserved.
+
+BY DOWNLOADING, INSTALLING, COPYING, ACCESSING, OR USING OPENGRF, YOU AGREE TO BE BOUND BY THE TERMS OF THIS SOFTWARE LICENCE AGREEMENT. IF YOU DO NOT AGREE TO THESE TERMS, YOU MAY NOT DOWNLOAD, INSTALL, COPY, ACCESS, OR USE OPENGRF.
+
+This Software Licence Agreement ("Agreement") is between Andrea Di Pietro, acting as the owner of the economic exploitation rights in OpenGRF and as the licensor of OpenGRF ("Licensor"), and the academic institution, non-profit organisation, or individual researcher using OpenGRF for permitted non-commercial research purposes ("Licensee" or "You").
+
+This Agreement is granted solely by Andrea Di Pietro, acting as the owner of the economic exploitation rights in OpenGRF and as the licensor of OpenGRF. No collaborator, contributor, affiliated institution, employer, or other third party is a party to this Agreement or grants any rights under this Agreement unless expressly stated in a separate written agreement.
+
+All rights not expressly granted to You under this Agreement are reserved by Licensor.
+
+1. DEFINITIONS
+
+"Software" means OpenGRF, including any and all source code, object code, protected code, compiled files, executable files, MATLAB files, MATLAB P-code files, scripts, functions, documentation, examples, templates, configuration files, user interfaces, screen formats, data structures, programming instructions, updates, backups, merged copies, and any related materials made available by Licensor.
+
+"OpenGRF" means the version of the Software made available free of charge for academic or non-profit non-commercial research use under this Agreement.
+
+"OpenGRF Pro", "OpenGRF Advanced", "OpenGRF Professional", or any other advanced, commercial, extended, customised, or professional version of OpenGRF means any version of the Software or related software provided under separate licence terms and may include, without limitation, advanced functionalities such as automated reporting, professional support, custom integration, or other advanced features.
+
+"Commercial Use" means any use of the Software by or for a company, private laboratory, commercial entity, for-profit organisation, paid consultant, contract research organisation, clinical-commercial service, sports technology company, product developer, industrial research and development group, or any other activity intended for commercial advantage or monetary compensation. Commercial Use includes, without limitation, integration into commercial products, services, workflows, software, platforms, paid research services, paid consulting, commercial evaluation, benchmarking for commercial purposes, product development, internal company research, or support of a commercial service or product.
+
+"Non-Commercial Research Use" means academic or non-profit research use that is not intended for commercial advantage, monetary compensation, paid service provision, product development for commercial exploitation, or use by or on behalf of a commercial entity.
+
+2. RESERVATION OF OWNERSHIP AND GRANT OF LICENCE
+
+Licensor retains, as owner, all rights of economic exploitation in and to the Software that are necessary to grant this Agreement, including rights relating to copyrights, know-how, methods, algorithms, documentation, and related materials.
+
+For clarity, Andrea Di Pietro is the only party to this Agreement and the only Licensor under this Agreement. No collaborator, contributor, affiliated institution, employer, or other third party is a party to this Agreement, is a licensor under this Agreement, or grants Licensee any rights under this Agreement unless expressly stated in a separate written agreement.
+
+Subject to Your full compliance with this Agreement, Licensor grants You a personal, non-exclusive, non-transferable, non-sublicensable licence to use the Software only for permitted academic or non-profit Non-Commercial Research Use. This licence may be terminated only as provided in this Agreement.
+
+No ownership rights are transferred to You under this Agreement.
+
+Licensor represents that he is the owner or authorised controller of the economic exploitation rights necessary to grant this Agreement, whether by original ownership, assignment, transfer, written authorisation, employment-related ownership, institutional authorisation, or other valid legal basis.
+
+3. PERMITTED USES
+
+You may use OpenGRF only for academic or non-profit Non-Commercial Research Use.
+
+You may use the Software to generate research results, including estimated ground reaction force files, centre of pressure estimates, free moment estimates, plots, logs, reports, and derived scientific analyses, provided that such use complies with this Agreement.
+
+You may make modifications or adaptations to the Software only to the limited extent permitted under Section 8 of this Agreement.
+
+You may make a reasonable number of backup copies of the Software only as necessary for permitted Non-Commercial Research Use, provided that all copyright notices, attribution notices, citation notices, proprietary notices, and licence notices are preserved.
+
+If Licensee is an academic institution, non-profit organisation, research group, laboratory, project, consortium, or individual researcher, access to the Software may be provided to authorised academic or non-profit researchers, students, employees, personnel, or collaborators who need such access for permitted Non-Commercial Research Use, provided that such persons are not acting by, for, or on behalf of a commercial entity and are bound by obligations consistent with this Agreement.
+
+4. CITATION REQUIREMENT
+
+Any publication, thesis, dissertation, conference abstract, poster, presentation, technical report, scientific report, preprint, journal article, dataset description, grant report, or other scientific output that uses, relies on, or reports results generated in whole or in part using OpenGRF must cite the official OpenGRF reference specified by Licensor.
+
+Please cite the following preprint when using OpenGRF or results generated with OpenGRF:
+
+Andrea Di Pietro, Francesca Di Puccio and Luca Modenese, “OpenGRF: Predicting Ground Reaction Forces and Moments During Daily Living Activities in OpenSim”, bioRxiv, 2025, doi: 10.1101/2025.09.27.678739.
+
+If a peer-reviewed version becomes available, please cite the published paper instead.
+
+Licensee agrees not to remove, alter, or obscure any citation notice, copyright notice, licence notice, proprietary notice, or attribution notice included in the Software or generated output files.
+
+When reasonably possible, output files, reports, logs, or derived files generated by OpenGRF should retain the OpenGRF attribution and citation notice.
+
+5. COMMERCIAL USE PROHIBITED
+
+Commercial Use is not permitted under this Agreement.
+
+Companies, private laboratories, for-profit organisations, paid consultants, contract research organisations, clinical-commercial services, sports technology companies, product developers, industrial research and development groups, and any other commercial users must obtain a separate written commercial licence from Licensor before using OpenGRF or any part of the Software.
+
+Use of the Software for commercial evaluation, benchmarking, product development, service provision, consulting, internal company research, clinical-commercial analysis, integration into paid workflows, or support of a commercial product or service is prohibited unless expressly authorised in a separate written commercial licence.
+
+For the avoidance of doubt, use of OpenGRF by a company or for the benefit of a company is considered Commercial Use, even if no direct fee is charged for a specific analysis.
+
+6. USES NOT PERMITTED
+
+Except as expressly permitted in this Agreement, You may not:
+
+a. sell, rent, lease, sublicense, lend, assign, transfer, time-share, distribute, publish, disclose, or otherwise make available the Software, in whole or in part, to any third party except as expressly permitted for authorised academic or non-profit Non-Commercial Research Use under this Agreement;
+
+b. provide access to the Software to any company, commercial entity, private laboratory, contractor, consultant, client, customer, or other person or entity not covered by the permitted academic or non-profit Non-Commercial Research Use under this Agreement;
+
+c. use the Software for any Commercial Use;
+
+d. use the Software to provide paid services, paid consulting, contract research, clinical-commercial services, commercial analysis, or commercial decision-making;
+
+e. incorporate the Software into any commercial product, service, platform, workflow, software package, database, cloud service, or web service;
+
+f. commercialise, sell, license, sublicense, distribute, publish, transfer, provide as a service, or otherwise exploit any modification, adaptation, derivative work, extension, improvement, translated version, ported version, or other work based on, incorporating, copying, adapting, or derived from the Software or any protected element of the Software without a separate written commercial licence from Licensor;
+
+g. remove, alter, or obscure copyright notices, licence notices, citation notices, proprietary notices, or attribution notices;
+
+h. use the name "OpenGRF", the names of the authors, the names of affiliated institutions, or any related trademarks, logos, or marks to endorse or promote any product, service, derivative work, publication, or commercial activity without prior written permission from Licensor;
+
+i. make the Software available on public repositories, websites, shared drives, institutional repositories, cloud platforms, or code-sharing platforms without prior written permission from Licensor;
+
+j. use the Software in any manner that violates applicable laws, regulations, institutional policies, ethical approvals, or third-party rights.
+
+7. CONFIDENTIALITY AND PROTECTION OF THE SOFTWARE
+
+Licensee acknowledges that the Software is proprietary to Licensor.
+
+Licensee agrees to use reasonable efforts to protect the Software from unauthorised use, access, copying, reproduction, disclosure, distribution, publication, transfer, or commercial exploitation.
+
+If Licensee is an organisation, research group, laboratory, project, or consortium, Licensee shall ensure that access to the Software is limited to authorised persons who need such access for permitted academic or non-profit Non-Commercial Research Use and who are bound by obligations consistent with this Agreement.
+
+The obligations in this section survive termination of this Agreement.
+
+8. MODIFICATIONS AND DERIVATIVE WORKS
+
+Licensee may modify, adapt, configure, correct, or extend the Software solely for permitted academic or non-profit Non-Commercial Research Use, provided that such modifications remain within the same permitted use, are not used for any Commercial Use, and are not distributed, published, sublicensed, sold, transferred, disclosed, uploaded to public repositories, or otherwise made available to any third party except as expressly permitted under this Agreement or with prior written permission from Licensor.
+
+All modifications, adaptations, corrections, extensions, improvements, derivative works, translated versions, ported versions, or merged copies based on, incorporating, copying, adapting, or derived from the Software or any protected element of the Software shall be deemed part of the Software for the purposes of this Agreement and shall remain subject to this Agreement. No ownership rights in the original Software are transferred to Licensee by virtue of making such modifications.
+
+Licensee may not commercialise, sell, license, sublicense, distribute, publish, transfer, provide as a service, or otherwise exploit any modification, adaptation, correction, extension, improvement, derivative work, translated version, ported version, merged copy, or other work based on, incorporating, copying, adapting, or derived from the Software or any protected element of the Software without a separate written commercial licence from Licensor.
+
+Nothing in this Agreement grants Licensee any right to use the Software, any protected element of the Software, or any modification or derivative work based on the Software for commercial exploitation, product development, paid services, consulting, commercial research, commercial benchmarking, or commercial decision-making.
+
+Licensee must preserve all copyright notices, attribution notices, citation notices, proprietary notices, licence notices, and third-party notices in any permitted modifications. Where reasonably practicable, Licensee should clearly mark modified files or internal documentation to indicate that changes were made by Licensee and not by Licensor.
+
+Licensee may not reverse engineer, decompile, or disassemble protected code, object code, compiled files, executable files, MATLAB P-code files, or other non-source components of the Software except to the extent expressly permitted by Licensor in writing or expressly allowed by applicable mandatory law.
+
+For clarity, independent experimental data, OpenSim models, datasets, publications, scientific results, and independent scripts that do not incorporate, modify, copy, adapt, or derive from the Software or any protected element of the Software remain the property of their respective owners.
+
+Licensee owns its research results, datasets, analyses, publications, and output files generated using the Software, provided that such outputs do not incorporate protected portions of the Software. This Agreement does not grant Licensee any right to commercialise the Software itself, any protected element of the Software, or any modification or derivative work based on the Software.
+
+9. FEEDBACK AND CONTRIBUTIONS
+
+Licensee may voluntarily provide suggestions, feedback, bug reports, corrections, feature requests, or other comments regarding the Software.
+
+Licensor is not obligated to implement any such feedback. If Licensor does implement or use such feedback, Licensee shall not be entitled to compensation, ownership, royalties, or any other claim related to such use.
+
+If Licensee voluntarily submits code, patches, modifications, extensions, corrections, or other technical contributions to Licensor for possible inclusion in OpenGRF or related software, Licensee grants Licensor a perpetual, worldwide, non-exclusive, royalty-free, fully paid-up licence to use, reproduce, modify, incorporate, distribute, sublicense, and commercialise such contributions as part of OpenGRF or related software, unless otherwise agreed in writing. Licensee represents that it has the necessary rights to submit such contributions.
+
+Where appropriate, Licensor may acknowledge substantial academic or technical contributions in documentation, release notes, publications, or other project materials, at Licensor's discretion. Nothing in this Agreement creates an obligation to provide authorship, co-authorship, employment, compensation, royalties, ownership, or any other form of consideration for feedback or contributions unless separately agreed in writing.
+
+10. TERM AND TERMINATION
+
+This Agreement begins when You download, install, copy, access, or use the Software.
+
+This Agreement automatically terminates without notice if You fail to comply with any provision of this Agreement.
+
+You may terminate this Agreement at any time by ceasing all use of the Software and deleting all copies in Your possession or control.
+
+Upon termination, You must immediately stop using the Software and delete all copies of the Software, including any backups, modifications, derivatives, merged copies, or portions thereof.
+
+Sections intended to protect Licensor's proprietary rights, including ownership, confidentiality, restrictions on use, citation obligations, warranty disclaimers, limitation of liability, export control, and third-party notices, shall survive termination.
+
+11. FEE
+
+Provided that Licensee fully complies with this Agreement, no fee is due for Licensee's permitted academic or non-profit Non-Commercial Research Use of OpenGRF.
+
+This no-fee licence does not apply to Commercial Use, which requires a separate written commercial licence.
+
+12. SUPPORT AND MAINTENANCE
+
+No support, maintenance, training, updates, upgrades, customisation, troubleshooting, or technical assistance is provided under this Agreement.
+
+Licensor may, at its discretion, provide updates, corrections, examples, documentation, or support, but has no obligation to do so.
+
+Professional support, advanced features, custom integrations, commercial use, or other services may be offered separately under a separate written agreement or licence.
+
+13. DISCLAIMER OF WARRANTIES
+
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, LICENSOR DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, ACCURACY, RELIABILITY, PERFORMANCE, VALIDATION, SECURITY, COMPATIBILITY, OR SUITABILITY FOR CLINICAL, COMMERCIAL, SPORT, ENGINEERING, RESEARCH, REGULATORY, OR OTHER PURPOSES.
+
+LICENSEE BEARS ALL RISK RELATING TO THE USE, QUALITY, PERFORMANCE, OUTPUTS, INTERPRETATION, AND RESULTS OF THE SOFTWARE.
+
+NOTHING IN THIS AGREEMENT EXCLUDES OR LIMITS ANY LIABILITY THAT CANNOT BE EXCLUDED OR LIMITED UNDER APPLICABLE MANDATORY LAW.
+
+14. LIMITATION OF LIABILITY
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, LICENSOR SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES, LOST PROFITS, LOST DATA, BUSINESS INTERRUPTION, RESEARCH DELAYS, INACCURATE RESULTS, DECISION-MAKING ERRORS, OR ANY DAMAGES ARISING OUT OF OR RELATED TO THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+NOTHING IN THIS AGREEMENT EXCLUDES OR LIMITS ANY LIABILITY THAT CANNOT BE EXCLUDED OR LIMITED UNDER APPLICABLE MANDATORY LAW.
+
+15. NO CLINICAL OR MEDICAL USE
+
+Unless expressly authorised in a separate written agreement, the Software is not intended for clinical diagnosis, treatment, medical decision-making, patient-specific clinical use, regulatory approval, or any use requiring certification as a medical device.
+
+Any use of the Software in clinical research, healthcare-related research, rehabilitation research, sport science, ergonomics, or human movement research must comply with all applicable laws, ethical approvals, institutional policies, informed consent requirements, and regulatory requirements.
+
+The Software is not a medical device and must not be used as the exclusive basis for clinical, therapeutic, safety-critical, or commercial decision-making.
+
+16. EXPORT CONTROL AND COMPLIANCE WITH LAWS
+
+Licensee agrees to comply with all applicable laws, regulations, export control rules, sanctions, embargoes, institutional policies, data protection rules, and ethical requirements related to the use, transfer, access, or distribution of the Software.
+
+17. ASSIGNMENT
+
+Licensee may not assign, transfer, delegate, or sublicense this Agreement or any rights granted under it without prior written permission from Licensor.
+
+Any attempted assignment or transfer without such permission shall be null and void.
+
+18. SEVERABILITY
+
+If any provision of this Agreement is held to be invalid, illegal, or unenforceable, the remaining provisions shall remain in full force and effect.
+
+The invalid, illegal, or unenforceable provision shall be replaced, to the extent permitted by law, by a valid provision that most closely reflects the original intent of the parties.
+
+19. NO IMPLIED WAIVER
+
+No failure or delay by Licensor in exercising any right or remedy under this Agreement shall operate as a waiver of any right or remedy.
+
+No waiver shall be effective unless made in writing by Licensor.
+
+20. GOVERNING LAW AND JURISDICTION
+
+This Agreement shall be governed by and construed in accordance with the laws of Italy, without regard to conflict of law principles.
+
+Any dispute arising out of or relating to this Agreement shall be subject to the exclusive jurisdiction of the competent courts of Rome, Italy, to the maximum extent permitted by applicable law, unless otherwise required by applicable mandatory law.
+
+21. ENTIRE AGREEMENT
+
+This Agreement constitutes the entire agreement between Licensee and Licensor regarding the Software and supersedes all prior or contemporaneous agreements, understandings, communications, or arrangements relating to the Software.
+
+Any amendment or modification of this Agreement must be in writing and signed or expressly approved by Licensor.
+
+22. CONTACT FOR COMMERCIAL LICENSING
+
+For commercial licensing, advanced features, professional support, integration, custom development, or other licensing requests, contact:
+
+Andrea Di Pietro
+andrea.dipietro94@gmail.com
+Italy
+
+23. LANGUAGE
+
+This Agreement is drafted in English. Any translation is provided for convenience only. In case of any inconsistency between the English version and a translation, the English version shall prevail, unless prohibited by applicable law.
+
+************************************************************************
+
+THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+
+OpenGRF may require, interact with, or be used together with third-party software, libraries, platforms, models, file format utilities, and related scientific software.
+
+Such third-party software is not licensed under this Agreement unless expressly stated. Third-party software remains subject to its own licence terms, notices, restrictions, and conditions.
+
+Licensee is responsible for ensuring that it has the necessary rights, licences, installations, and permissions to use any required third-party software.
+
+The following third-party software, libraries, or tools may be relevant to OpenGRF depending on the version, distribution, or use case:
+
+1. OpenSim
+  OpenGRF may require or interact with OpenSim and/or OpenSim models, files, APIs, or tools. OpenSim is subject to its own licence terms and notices.
+
+2. MATLAB and MATLAB toolboxes
+  OpenGRF may require or interact with MATLAB, MATLAB toolboxes, MATLAB Compiler outputs, or MATLAB-related components. These components are subject to MathWorks licence terms and are not licensed under this Agreement. No MATLAB Runtime is included or distributed under this Agreement unless expressly stated by Licensor.
+
+3. SimTK-hosted components
+  OpenGRF may be distributed through, linked from, or used with SimTK-hosted components or resources. Such components may be subject to separate licence terms.
+
+4. Other third-party libraries, models, datasets, or utilities
+  Any third-party libraries, models, datasets, examples, templates, or utilities included with or used by OpenGRF remain subject to their respective licence terms.
+
+Licensor reserves all rights not expressly granted under this Agreement.
+
+************END OF THIRD-PARTY SOFTWARE NOTICES AND INFORMATION************
