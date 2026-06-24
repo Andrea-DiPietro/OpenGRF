@@ -37,7 +37,7 @@ For the automatic cut-off frequency option, the code uses continuous wavelet tra
 
 ## Important file-name note
 
-MATLAB function files should be named exactly as their main function. If the files were downloaded or copied with suffixes such as `(1)`, `(2)`, or `(3)`, rename them before running the tool.
+MATLAB function files should be named exactly as their main function.
 
 Recommended file names:
 
