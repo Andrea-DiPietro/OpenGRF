@@ -1,6 +1,6 @@
 # OpenGRF
 
-OpenGRF is a MATLAB/OpenSim API tool for predicting Ground Reaction Forces (GRFs) from a subject-specific musculoskeletal model and inverse-kinematics motion data.
+OpenGRF is a MATLAB/OpenSim API tool for predicting Ground Reaction Forces (GRFs) from a scaled/subject-specific musculoskeletal model and inverse-kinematics motion data.
 
 The workflow is designed to be run from MATLAB, either through the provided graphical user interface or programmatically through a configuration structure.
 
