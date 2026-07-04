@@ -358,8 +358,8 @@ ExecutePK(modelProcessed,modelProcessed_path,fullfile(IKFolder,IKResult),...
     Freq,timeStart,timeEnd,calcn_r_name, calcn_l_name, toes_r_name, ...
     toes_l_name, heel_shift,path_PK,path_Solution);
 % inizializing vectors of spheres positions correction
-Sp_delta_r=zeros(size(BKout.timeBK,1),size(PosSp,1));
-Sp_delta_l=zeros(size(BKout.timeBK,1),size(PosSp,1));
+Sp_delta_r=zeros(1,size(PosSp,1));
+Sp_delta_l=zeros(1,size(PosSp,1));
 % finding position of each sphere with respect to the ground @ foot flat instant
 
 for ii=1:size(PosSp,1)
