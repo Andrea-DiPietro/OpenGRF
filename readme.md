@@ -138,7 +138,7 @@ cfg.TimeStart = 0.0;
 cfg.TimeEnd = 1.0;
 
 % Maximum contact penetration [mm]
-cfg.PenetrationMM = 14;
+cfg.PenetrationMM = 7;
 
 % Contact body names. Edit these if your model uses different body names.
 cfg.ContactBodies = struct();
@@ -189,7 +189,7 @@ out.ExternalForceSetupPath
 | `.osim` model | Scaled or subject-specific OpenSim musculoskeletal model. |
 | `.mot` kinematics | Inverse-kinematics result containing the motion to analyze. |
 | Start and end time | Time interval to process, in seconds. |
-| Penetration | Maximum contact penetration in millimetres. Default: `14 mm`. |
+| Penetration | Maximum contact penetration in millimetres. Default: `7 mm`. |
 | Cut-off frequency | Either automatically detected or manually specified in Hz. |
 
 ### Optional inputs
@@ -292,7 +292,7 @@ When using manual frequency mode, the cut-off frequency must be positive and low
 
 ### Contact forces drop to zero unexpectedly
 
-If contact is lost during the analysis, increase the maximum contact penetration value. The default is `14 mm`.
+If contact is lost during the analysis, increase the maximum contact penetration value. The default is `7 mm`.
 
 ### Stairs or multi-level surfaces
 
