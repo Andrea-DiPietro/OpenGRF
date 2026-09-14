@@ -100,7 +100,7 @@ Then use the GUI to:
 5. Choose the kinematics low-pass filtering mode:
    - **Automatic frequency**: uses `DetectFcut(Motion, Fs)`.
    - **Manual cut-off**: uses the manually entered frequency in Hz.
-6. Set the maximum contact penetration in millimetres. The default value is `14 mm`.
+6. Set the maximum contact penetration in millimetres. The default value is `7 mm`.
 7. Use **Advanced settings** if you need to edit:
    - contact body names,
    - contact plane positions,
