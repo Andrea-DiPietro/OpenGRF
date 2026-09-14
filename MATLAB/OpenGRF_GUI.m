@@ -81,7 +81,7 @@ startField = uieditfield(runGrid,'numeric','Value',0);
 uilabel(runGrid,'Text','End time [s]');
 endField = uieditfield(runGrid,'numeric','Value',0);
 uilabel(runGrid,'Text','Penetration [mm]');
-penField = uieditfield(runGrid,'numeric','Value',14,'Limits',[0 Inf]);
+penField = uieditfield(runGrid,'numeric','Value',7,'Limits',[0 Inf]);
 
 autoFreqCheck = uicheckbox(runGrid, ...
     'Text','Automatic frequency', ...
